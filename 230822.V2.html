@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, sans-serif;
+            color: azure;
+            font-size: larger;
+        }
+    </style>
+    <style>
+        body {
+            background: url(https://dcom-prod.imgix.net/files/2020-04/Por-que-el-cielo-se-ve-azul_thumbnail.jpg?w=1280&h=720&crop=focalpoint&fp-x=0.50974025974026&fp-y=0.53030303030303&fit=crop&auto=compress&q=75);
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+            margin: 0;
+            height: 100%;
+            border: 0;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            -ms-background-size: cover;
+            text-align: center;
+        }
+        
+        .cajaregu {
+            font-family: "fantasy", arial;
+            width: 100%;
+            margin: 0;
+            height: 100%;
+            border: 0;
+            position: relative;
+            font-size: xx-large;
+        }
+        
+        .cajasen {
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 25%;
+            height: 25%;
+            margin: 1%;
+            padding: 0.3%;
+            font-family: "fantasy", arial;
+            text-align: center;
+        }
+    </style>
+    <style>
+        .cajas4 {
+            background-color: aquamarine;
+            color: black;
+            border: 4px solid gold;
+            border-radius: 12px;
+            font-family: "fantasy", arial;
+            position: relative;
+            margin: 1%;
+            padding: 0.5%;
+            width: 7%;
+            height: 50%;
+        }
+        
+        .cajas3 {
+            background-color: red;
+            color: black;
+            border: 4px solid black;
+            border-radius: 12px;
+            opacity: 0.6;
+            font-family: "fantasy", arial;
+            position: relative;
+            margin: 1%;
+            padding: 0.5%;
+            width: 7%;
+            height: 50%;
+        }
+        
+        .cajas2 {
+            background-color: cornflowerblue;
+            color: black;
+            border: 4px solid aquamarine;
+            border-radius: 12px;
+            font-family: "fantasy", arial;
+            position: relative;
+            margin: 1%;
+            padding: 0.5%;
+            width: 7%;
+            height: 50%;
+        }
+        
+        .cajas1 {
+            background-color: black;
+            color: white;
+            border: 4px solid red;
+            border-radius: 12px;
+            font-family: "fantasy", arial;
+            position: relative;
+            margin: 1%;
+            padding: 0.5%;
+            width: 7%;
+            height: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="cajaregu">Control de Inventario</h1><br>
+        <h2 class="cajaregu">Arboles binarios</h2><br>
+    </header>
+    <div id="app">
+        <form>
+            <label for="cod">Codigo:</label><br>
+            <input type="text" id="cod" class="cajasen" placeholder='Ingrese el Codigo del producto'><br>
+            <label for="nom" class="one">Nombre:</label><br>
+            <input type="text" id="nom" class="cajasen" placeholder='Ingrese el Nombre del producto'><br>
+            <label for="pre" class="one">Precio:</label><br>
+            <input type="number" id="pre" class="cajasen" placeholder='Ingrese el Precio del producto'><br>
+            <label for="can" class="one">Cantidad:</label><br>
+            <input type="number" id="can" class="cajasen" placeholder='Ingrese la Cantidad del producto'><br>
+            <button type='reset' class="cajas3">Cancelar</button>
+            <button type="button" id="clear" class="cajas3">Limpiar</button>
+            <button type='button' id='add' class="cajas2">Agregar</button>
+            <button type='button' id='find' class="cajas4">buscar</button>
+            <button type='button' id="Inorder" class="cajas1">Inorder</button>
+            <button type='button' id='Preorden' class="cajas1">Preorden</button>
+            <button type='button' id='postOrder' class="cajas1">postOrder</button>
+        </form>
+        <div id="detalles" class="cajaregu"></div>
+    </div>
+
+
+    <script>
+        class Producto {
+            constructor(nombre, codigo, precio, cantidad) {
+                this.nombre = nombre;
+                this.codigo = codigo;
+                this.precio = precio;
+                this.cantidad = cantidad;
+                this.hijoIzquierdo = null;
+                this.hijoDerecho = null;
+            }
+        }
+        class BinaryTree {
+            constructor() {
+                this.raiz = null;
+            }
+            agregar(nuevo) {
+                if (this.raiz == null)
+                    this.raiz = nuevo;
+                else
+                    this._agregate(nuevo, this.raiz);
+            }
+            _agregate(nuevo, nodox) {
+                if (nuevo.codigo < nodox.codigo)
+                    if (nodox.hijoIzquierdo == null)
+                        nodox.hijoIzquierdo = nuevo;
+                    else
+                        this._agregate(nuevo, nodox.hijoIzquierdo);
+                else
+                if (nodox.hijoDerecho == null)
+                    nodox.hijoDerecho = nuevo;
+                else
+                    this._agregate(nuevo, nodox.hijoDerecho);
+            }
+
+            buscar(nuevo) {
+                if (this.raiz == null)
+                    return "";
+                if (this.raiz.codigo == nuevo)
+                    return this.raiz.codigo;
+                else
+                    this.buscando(nuevo, this.raiz);
+            }
+
+            buscando(nuevo) {
+                let valor = this.raiz;
+                while (valor.codigo != nuevo) {
+                    if (nuevo < valor.codigo) {
+                        valor = valor.hijoIzquierdo;
+                    } else
+                        valor = valor.hijoDerecho;
+                    if (valor == null) {
+                        return null;
+                    }
+                }
+                return valor.codigo;
+            }
+
+            inOrder() {
+                if (this.raiz == null)
+                    return " ";
+                else
+                    return this._InOrderRec(this.raiz);
+            }
+            _InOrderRec(nodox) {
+                let info = "";
+                if (nodox.hijoIzquierdo != null)
+                    info += this._InOrderRec(nodox.hijoIzquierdo);
+                info += nodox.codigo + "  - ";
+                if (nodox.hijoDerecho != null)
+                    info += this._InOrderRec(nodox.hijoDerecho);
+                return info;
+            }
+
+            preOrder() {
+                if (this.raiz == null)
+                    return " ";
+                else
+                    return this._preOrderRec(this.raiz);
+            }
+            _preOrderRec(nodox) {
+                let info = "";
+                info += nodox.codigo + "  - ";
+                if (nodox.hijoIzquierdo != null)
+                    info += this._preOrderRec(nodox.hijoIzquierdo);
+                if (nodox.hijoDerecho != null)
+                    info += this._preOrderRec(nodox.hijoDerecho);
+                return info;
+            }
+
+            postOrder() {
+                if (this.raiz == null)
+                    return " ";
+                else
+                    return this._postOrderRec(this.raiz);
+            }
+            _postOrderRec(nodox) {
+                let info = "";
+                if (nodox.hijoIzquierdo != null)
+                    info += this._preOrderRec(nodox.hijoIzquierdo);
+                if (nodox.hijoDerecho != null)
+                    info += this._preOrderRec(nodox.hijoDerecho);
+                info += nodox.codigo + "  - ";
+                return info;
+            }
+        }
+        let arbol = new BinaryTree();
+        const add = document.getElementById('add');
+        add.addEventListener('click', () => {
+            console.log("Se va a agregar un producto");
+            let codigo = document.getElementById("cod").value;
+            codigo = parseInt(codigo);
+            let nombre = document.getElementById("nom").value;
+            let precio = document.getElementById("pre").value;
+            let cantidad = document.getElementById("can").value;
+            let producto = new Producto(codigo, nombre, precio, cantidad);
+            arbol.agregar(producto);
+            //indicar interfaz
+            let detalles = document.getElementById('detalles');
+            detalles.innerHTML += '<p>Se agrego el producto ' + nombre + '</p>';
+        });
+
+        const find = document.getElementById('find');
+        find.addEventListener('click', () => {
+            let codigo = document.getElementById('cod').value;
+            let busc = arbol.buscando(codigo);
+            let detalles = document.getElementById('detalles');
+            if (busc == null)
+                detalles.innerHTML += '<p>No existe el buscado</p>';
+            else {
+                detalles.innerHTML += '<p>Si existe el producto con el codigo:</p>' + codigo;
+            }
+        });
+
+        const Inorder = document.getElementById('Inorder');
+        Inorder.addEventListener('click', () => {
+            let detalles = document.getElementById('detalles');
+            detalles.innerHTML += '<h3>listado</h3>';
+            detalles.innerHTML += arbol.inOrder();
+        });
+
+        const Preorden = document.getElementById('Preorden');
+        Preorden.addEventListener('click', () => {
+            let detalles = document.getElementById('detalles');
+            detalles.innerHTML += '<h3>listado</h3>';
+            detalles.innerHTML += arbol.preOrder();
+        });
+
+        const postOrder = document.getElementById('postOrder');
+        postOrder.addEventListener('click', () => {
+            let detalles = document.getElementById('detalles');
+            detalles.innerHTML += '<h3>listado</h3>';
+            detalles.innerHTML += arbol.postOrder();
+        });
+
+        const clear = document.getElementById('clear');
+        clear.addEventListener('click', () => {
+            document.getElementById('detalles').innerHTML = '';
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+
+</html>
