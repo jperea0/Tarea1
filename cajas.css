@@ -1,0 +1,94 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    color: azure;
+    font-size: larger;
+}
+
+body {
+    background: url(https://dcom-prod.imgix.net/files/2020-04/Por-que-el-cielo-se-ve-azul_thumbnail.jpg?w=1280&h=720&crop=focalpoint&fp-x=0.50974025974026&fp-y=0.53030303030303&fit=crop&auto=compress&q=75);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    border: 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    text-align: center;
+}
+
+.cajaregu {
+    font-family: "fantasy", arial;
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    border: 0;
+    position: relative;
+    font-size: xx-large;
+}
+
+.cajasen {
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 25%;
+    height: 25%;
+    margin: 1%;
+    padding: 0.3%;
+    font-family: "fantasy", arial;
+    text-align: center;
+}
+
+.cajas4 {
+    background-color: aquamarine;
+    color: black;
+    border: 4px solid gold;
+    border-radius: 12px;
+    font-family: "fantasy", arial;
+    position: relative;
+    margin: 1%;
+    padding: 0.5%;
+    width: 7%;
+    height: 50%;
+}
+
+.cajas3 {
+    background-color: red;
+    color: black;
+    border: 4px solid black;
+    border-radius: 12px;
+    opacity: 0.6;
+    font-family: "fantasy", arial;
+    position: relative;
+    margin: 1%;
+    padding: 0.5%;
+    width: 7%;
+    height: 50%;
+}
+
+.cajas2 {
+    background-color: cornflowerblue;
+    color: black;
+    border: 4px solid aquamarine;
+    border-radius: 12px;
+    font-family: "fantasy", arial;
+    position: relative;
+    margin: 1%;
+    padding: 0.5%;
+    width: 7%;
+    height: 50%;
+}
+
+.cajas1 {
+    background-color: black;
+    color: white;
+    border: 4px solid red;
+    border-radius: 12px;
+    font-family: "fantasy", arial;
+    position: relative;
+    margin: 1%;
+    padding: 0.5%;
+    width: 7%;
+    height: 50%;
+}

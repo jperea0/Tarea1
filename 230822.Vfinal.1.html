@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cajas.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="cajaregu">Control de Inventario</h1><br>
+        <h2 class="cajaregu">Arboles binarios</h2><br>
+    </header>
+    <div id="app">
+        <form>
+            <label for="cod">Codigo:</label><br>
+            <input type="text" id="cod" class="cajasen" placeholder='Ingrese el Codigo del producto'><br>
+            <label for="nom" class="one">Nombre:</label><br>
+            <input type="text" id="nom" class="cajasen" placeholder='Ingrese el Nombre del producto'><br>
+            <label for="pre" class="one">Precio:</label><br>
+            <input type="number" id="pre" class="cajasen" placeholder='Ingrese el Precio del producto'><br>
+            <label for="can" class="one">Cantidad:</label><br>
+            <input type="number" id="can" class="cajasen" placeholder='Ingrese la Cantidad del producto'><br>
+            <button type='reset' class="cajas3">Cancelar</button>
+            <button type="button" id="clear" class="cajas3">Limpiar</button>
+            <button type='button' id='add' class="cajas2">Agregar</button>
+            <button type='button' id='find' class="cajas4">buscar</button>
+            <button type='button' id="Inorder" class="cajas1">Inorder</button>
+            <button type='button' id='Preorden' class="cajas1">Preorden</button>
+            <button type='button' id='postOrder' class="cajas1">postOrder</button>
+        </form>
+        <div id="detalles" class="cajaregu"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
